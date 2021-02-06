@@ -61,6 +61,7 @@ class _LoginPageState extends State<LoginPage> {
       onPressed: () {
         signInWithGoogle().then((result) {
           if (result != null) {
+            Navigator.pop(context);
             Navigator.of(context).push(
               MaterialPageRoute(
                 builder: (context) {
