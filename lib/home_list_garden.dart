@@ -27,16 +27,22 @@ class _HomeGardenListState extends State<HomeGardenList> {
     );
   }
 
+  int i = 1;
+
   Widget _dataList(String type, String date, int humidity, int temp) {
+    i == 1 ? i = 0 : i = 1;
     return Padding(
       padding: EdgeInsets.all(5),
       child: Container(
           height: 100,
           decoration: BoxDecoration(
-            color: Colors.grey,
+            color: i == 1 ? Color(0xFF27AE60) : Color(0xFFF5B041),
+            borderRadius: BorderRadius.circular(20),
             boxShadow: [
               BoxShadow(
-                color: Colors.grey.withOpacity(0.5),
+                color: i == 1
+                    ? Color(0xFF27AE60).withOpacity(0.4)
+                    : Color(0xFFF5B041).withOpacity(0.4),
                 spreadRadius: 5,
                 blurRadius: 7,
                 offset: Offset(0, 3), // changes position of shadow
