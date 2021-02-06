@@ -57,6 +57,7 @@ class _HeroGardenDataState extends State<HeroGardenData> {
                       child: Image.asset(
                         "assets/" + this.type + ".png",
                         width: MediaQuery.of(context).size.width / 1.7,
+                        height: MediaQuery.of(context).size.height / 5,
                       ),
                       top: 40,
                       left: -10,

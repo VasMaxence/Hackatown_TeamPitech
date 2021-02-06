@@ -1,8 +1,8 @@
 class Data {
   final List<String> Aliment = [
     "potato",
-    "carrote",
-    "apple",
+    "carotte",
+    "pomme",
     "fraise",
     "framboise",
     "epinard"

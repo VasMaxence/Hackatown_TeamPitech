@@ -58,6 +58,11 @@ flutter:
     - assets/CleanerFutureLogo-94.png
     - assets/CleanerFutureLogo-512.png
     - assets/potato.png
+    - assets/carotte.png
+    - assets/epinard.png
+    - assets/fraise.png
+    - assets/framboise.png
+    - assets/pomme.png
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.
