@@ -10,59 +10,52 @@ class HomeGardenList extends StatefulWidget {
 }
 
 class _HomeGardenListState extends State<HomeGardenList> {
-
   final firestoreInstance = FirebaseFirestore.instance;
   String val = Data.Aliment[0];
 
   _showDialog() {
     showDialog(
-      context: context,
-      builder: (context) {
-        return StatefulBuilder(
-          builder: (context, setState) {
-           return AlertDialog(
-             title: Text("Add new garden"),
-             content: DropdownButton<String>(
-               value: val,
-               elevation: 16,
-               //style:
-               //underline:
-               onChanged: (String newValue) {
-                 setState(() {
-                   val = newValue;
-                 });
-               },
-               items: Data.Aliment
-                 .map<DropdownMenuItem<String>>((String value) {
-                   return DropdownMenuItem<String>(
-                     value: value,
-                     child: Text(value),
-                   );
-               }).toList(),
-             ),
-             actions: [
-               FlatButton(
-                 child: Text("submit"),
-                 onPressed: () {
-                   firestoreInstance.collection("garden").add({
-                     "name": val,
-                     "humidity": 72,
-                     "temperature": 12,
-                     "last_watered": DateTime.now()
-                   }).then((value) {
-                     firestoreInstance.collection("link").doc(value.id).set({
-                       "uid": uid,
-                     }).then((value) => print("SUCCESS!!!"));
-                   });
-                   Navigator.of(context).pop();
-                 }
-               )
-             ],
-           );
-          }
-        );
-      }
-    );
+        context: context,
+        builder: (context) {
+          return StatefulBuilder(builder: (context, setState) {
+            return AlertDialog(
+              title: Text("Add new garden"),
+              content: DropdownButton<String>(
+                value: val,
+                elevation: 16,
+                onChanged: (String newValue) {
+                  setState(() {
+                    val = newValue;
+                  });
+                },
+                items:
+                    Data.Aliment.map<DropdownMenuItem<String>>((String value) {
+                  return DropdownMenuItem<String>(
+                    value: value,
+                    child: Text(value),
+                  );
+                }).toList(),
+              ),
+              actions: [
+                FlatButton(
+                    child: Text("submit"),
+                    onPressed: () {
+                      firestoreInstance.collection("garden").add({
+                        "name": val,
+                        "humidity": 72,
+                        "temperature": 12,
+                        "last_watered": DateTime.now()
+                      }).then((value) {
+                        firestoreInstance.collection("link").doc(value.id).set({
+                          "uid": uid,
+                        }).then((value) => print("SUCCESS!!!"));
+                      });
+                      Navigator.of(context).pop();
+                    })
+              ],
+            );
+          });
+        });
   }
 
   @override
