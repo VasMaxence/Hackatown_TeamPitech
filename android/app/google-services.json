@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "575341106873",
+    "project_id": "hackatownteampitech",
+    "storage_bucket": "hackatownteampitech.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:575341106873:android:31fb3dd30b5f627b81ed68",
+        "android_client_info": {
+          "package_name": "com.edhec.hackatown"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "575341106873-kqjj8ffo56bp3nsuufpgig2ltj78hdbr.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.edhec.hackatown",
+            "certificate_hash": "7a3a8794078de5b4e0b51aa3e0b17637a8a69946"
+          }
+        },
+        {
+          "client_id": "575341106873-60f5mp9n8d8jfgf9b4e9re13s6eo7adi.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBv9REncX-sazn8KobgKacUnQX0l7JABX0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "575341106873-60f5mp9n8d8jfgf9b4e9re13s6eo7adi.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
