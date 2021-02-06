@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:hackatown/hero_vegetable_garden.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'data.dart';
+import 'sign_in.dart';
 
 class HomeGardenList extends StatefulWidget {
   @override
@@ -9,6 +11,7 @@ class HomeGardenList extends StatefulWidget {
 
 class _HomeGardenListState extends State<HomeGardenList> {
 
+  final firestoreInstance = FirebaseFirestore.instance;
   String val = Data.Aliment[0];
 
   _showDialog() {
@@ -41,6 +44,16 @@ class _HomeGardenListState extends State<HomeGardenList> {
                FlatButton(
                  child: Text("submit"),
                  onPressed: () {
+                   firestoreInstance.collection("garden").add({
+                     "name": val,
+                     "humidity": 72,
+                     "temperature": 12,
+                     "last_watered": DateTime.now()
+                   }).then((value) {
+                     firestoreInstance.collection("link").doc(value.id).set({
+                       "uid": uid,
+                     }).then((value) => print("SUCCESS!!!"));
+                   });
                    Navigator.of(context).pop();
                  }
                )
