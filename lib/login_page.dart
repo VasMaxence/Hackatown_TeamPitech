@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:hackatown/hero_vegetable_garden.dart';
 import 'sign_in.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
@@ -62,7 +63,7 @@ class _LoginPageState extends State<LoginPage> {
             Navigator.of(context).push(
               MaterialPageRoute(
                 builder: (context) {
-                  return FirstScreen();
+                  return HeroGardenData(type: "potato", humidity: 22, temp: 12, date: "12/33/2",);
                 },
               ),
             );
