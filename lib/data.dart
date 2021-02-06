@@ -1,5 +1,5 @@
 class Data {
-  final List<String> Aliment = [
+  static List<String> Aliment = [
     "potato",
     "carotte",
     "pomme",

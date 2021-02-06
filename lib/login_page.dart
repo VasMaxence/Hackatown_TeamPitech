@@ -167,14 +167,7 @@ class FirstScreen extends StatelessWidget {
         ),
         floatingActionButton: FloatingActionButton(
           onPressed: () {
-            firestoreInstance.collection("garden").doc(uid).set({
-              "name": "potato",
-              "humidity": 72,
-              "temperature": 12,
-              "last_watered": DateTime.now(),
-            }).then((_) {
-              print("success!!!!!!!!!");
-            });
+
           },
           child: Icon(Icons.add),
           backgroundColor: Colors.green,

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:hackatown/hero_vegetable_garden.dart';
+import 'data.dart';
 
 class HomeGardenList extends StatefulWidget {
   @override
@@ -7,6 +8,50 @@ class HomeGardenList extends StatefulWidget {
 }
 
 class _HomeGardenListState extends State<HomeGardenList> {
+
+  String val = Data.Aliment[0];
+
+  _showDialog() {
+    showDialog(
+      context: context,
+      builder: (context) {
+        return StatefulBuilder(
+          builder: (context, setState) {
+           return AlertDialog(
+             title: Text("Add new garden"),
+             content: DropdownButton<String>(
+               value: val,
+               elevation: 16,
+               //style:
+               //underline:
+               onChanged: (String newValue) {
+                 setState(() {
+                   val = newValue;
+                 });
+               },
+               items: Data.Aliment
+                 .map<DropdownMenuItem<String>>((String value) {
+                   return DropdownMenuItem<String>(
+                     value: value,
+                     child: Text(value),
+                   );
+               }).toList(),
+             ),
+             actions: [
+               FlatButton(
+                 child: Text("submit"),
+                 onPressed: () {
+                   Navigator.of(context).pop();
+                 }
+               )
+             ],
+           );
+          }
+        );
+      }
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -23,6 +68,13 @@ class _HomeGardenListState extends State<HomeGardenList> {
             _dataList("pomme", "30/12/01", 12, 10),
           ],
         ),
+      ),
+      floatingActionButton: FloatingActionButton(
+        child: Icon(Icons.add),
+        backgroundColor: Colors.green,
+        onPressed: () {
+          _showDialog();
+        },
       ),
     );
   }
