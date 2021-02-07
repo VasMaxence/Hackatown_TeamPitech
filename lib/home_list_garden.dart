@@ -25,7 +25,7 @@ class _HomeGardenListState extends State<HomeGardenList> {
       "name": val,
       "humidity": 72,
       "temperature": 12,
-      "last_watered": DateTime.now()
+      "last_watered": DateTime.now().toString()
     };
 
     showDialog(

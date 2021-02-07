@@ -24,8 +24,8 @@ class Database {
       gardens.add(new GardenData(doc.id, doc.data()));
   }
 
-  static uploadGardenTime(String id) async {
-    await firestoreInstance.collection("garden").doc(id).update({"last_watered": DateTime.now()});
+  static uploadGardenTime(String id, final time) async {
+    await firestoreInstance.collection("garden").doc(id).update({"last_watered": time});
   }
 
   static addGarden(Map<String, dynamic> data) async {

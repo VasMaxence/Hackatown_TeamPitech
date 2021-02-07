@@ -28,7 +28,7 @@ class _HeroGardenDataState extends State<HeroGardenData> {
   final String type;
   final int humidity;
   final int temp;
-  final String date;
+  String date;
   final String id;
 
   _HeroGardenDataState(
@@ -49,9 +49,10 @@ class _HeroGardenDataState extends State<HeroGardenData> {
         child: Icon(Icons.water_damage),
         backgroundColor: Colors.blue,
         onPressed: () async {
-          await Database.uploadGardenTime(id);
+          String time = DateTime.now().toString();
+          await Database.uploadGardenTime(id, time);
           setState(() {
-            print("setting state 32");
+            this.date = time;
           });
         },
       ),
