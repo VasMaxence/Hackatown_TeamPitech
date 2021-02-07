@@ -48,7 +48,7 @@ class _HomeGardenListState extends State<HomeGardenList> {
                 FlatButton(
                     child: Text("submit"),
                     onPressed: () {
-                      firestoreInstance.collection("garden").add({
+                      Database.addGarden({
                         "uid": uid,
                         "name": val,
                         "humidity": 72,
