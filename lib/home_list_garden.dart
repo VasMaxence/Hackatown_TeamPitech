@@ -20,14 +20,6 @@ class _HomeGardenListState extends State<HomeGardenList> {
   }
 
   _showDialog() {
-    final data = {
-      "uid": uid,
-      "name": val,
-      "humidity": 72,
-      "temperature": 12,
-      "last_watered": DateTime.now().toString()
-    };
-
     showDialog(
         context: context,
         builder: (context) {
@@ -54,7 +46,13 @@ class _HomeGardenListState extends State<HomeGardenList> {
                 FlatButton(
                     child: Text("submit"),
                     onPressed: () {
-                      Database.addGarden(data).then((ref) {this.setState(() => Database.gardens.add(new GardenData(ref.id, data))); });
+                      Database.addGarden({
+                        "uid": uid,
+                        "name": val,
+                        "humidity": 72,
+                        "temperature": 12,
+                        "last_watered": DateTime.now().toString()
+                      }).then((ref) => {this.setState(() => {})});
                       Navigator.of(context).pop();
                     })
               ],

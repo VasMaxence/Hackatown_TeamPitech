@@ -31,6 +31,7 @@ class Database {
   static addGarden(Map<String, dynamic> data) async {
     final ref = await firestoreInstance.collection("garden").add(data);
 
+    Database.gardens.add(new GardenData(ref.id, data));
     return ref;
   }
 }
