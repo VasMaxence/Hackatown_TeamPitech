@@ -20,6 +20,14 @@ class _HomeGardenListState extends State<HomeGardenList> {
   }
 
   _showDialog() {
+    final data = {
+      "uid": uid,
+      "name": val,
+      "humidity": 72,
+      "temperature": 12,
+      "last_watered": DateTime.now()
+    };
+
     showDialog(
         context: context,
         builder: (context) {
@@ -46,13 +54,7 @@ class _HomeGardenListState extends State<HomeGardenList> {
                 FlatButton(
                     child: Text("submit"),
                     onPressed: () {
-                      Database.addGarden({
-                        "uid": uid,
-                        "name": val,
-                        "humidity": 72,
-                        "temperature": 12,
-                        "last_watered": DateTime.now()
-                      }).then((value) => print("SUCCESS!!!"));
+                      Database.addGarden(data).then((ref) {this.setState(() => Database.gardens.add(new GardenData(ref.id, data))); });
                       Navigator.of(context).pop();
                     })
               ],
@@ -71,7 +73,7 @@ class _HomeGardenListState extends State<HomeGardenList> {
         ),
         child: ListView.builder(
           itemCount: Database.gardens.length,
-          itemBuilder: (BuildContext, int index) {
+          itemBuilder: (_, int index) {
             return _dataList(Database.gardens[index].data["name"], Database.gardens[index].data["last_watered"].toString(), Database.gardens[index].data["humidity"], Database.gardens[index].data["temperature"]);
           }
         )
@@ -88,9 +90,9 @@ class _HomeGardenListState extends State<HomeGardenList> {
       floatingActionButton: FloatingActionButton(
         child: Icon(Icons.add),
         backgroundColor: Colors.green,
-        onPressed: () {
+        onPressed: () async {
           _showDialog();
-          Database.loadGarden().then((_) => (setState(() => print("setting state"))));
+          await Database.loadGarden();
           },
         ),
       );
