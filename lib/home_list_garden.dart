@@ -12,13 +12,11 @@ class HomeGardenList extends StatefulWidget {
 
 class _HomeGardenListState extends State<HomeGardenList> {
 
-  List gardens = [1, 2, 3];
-
   final firestoreInstance = FirebaseFirestore.instance;
   String val = Data.Aliment[0];
 
   _HomeGardenListState() {
-    Database.loadGarden().then((_) => { print("done") });
+    Database.loadGarden().then((_) => (setState(() => print("setting state"))));
   }
 
   _showDialog() {
@@ -72,9 +70,9 @@ class _HomeGardenListState extends State<HomeGardenList> {
           color: Colors.white,
         ),
         child: ListView.builder(
-          itemCount: gardens.length,
+          itemCount: Database.gardens.length,
           itemBuilder: (BuildContext, int index) {
-            return _dataList("fraise", "30/12/01", 12, 10);
+            return _dataList(Database.gardens[index].data["name"], Database.gardens[index].data["last_watered"].toString(), Database.gardens[index].data["humidity"], Database.gardens[index].data["temperature"]);
           }
         )
 
@@ -92,6 +90,7 @@ class _HomeGardenListState extends State<HomeGardenList> {
         backgroundColor: Colors.green,
         onPressed: () {
           _showDialog();
+          Database.loadGarden().then((_) => (setState(() => print("setting state"))));
           },
         ),
       );
