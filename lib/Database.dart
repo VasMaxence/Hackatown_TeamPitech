@@ -8,7 +8,7 @@ class GardenData {
 
   GardenData(final id, final data) {
     this.id = id;
-    this.data = data();
+    this.data = data;
   }
 }
 
