@@ -74,7 +74,7 @@ class _HomeGardenListState extends State<HomeGardenList> {
         child: ListView.builder(
           itemCount: Database.gardens.length,
           itemBuilder: (_, int index) {
-            return _dataList(Database.gardens[index].data["name"], Database.gardens[index].data["last_watered"].toString(), Database.gardens[index].data["humidity"], Database.gardens[index].data["temperature"]);
+            return _dataList(Database.gardens[index].data["name"], Database.gardens[index].data["last_watered"].toString(), Database.gardens[index].data["humidity"], Database.gardens[index].data["temperature"], Database.gardens[index].id);
           }
         )
 
@@ -100,7 +100,7 @@ class _HomeGardenListState extends State<HomeGardenList> {
 
   int i = 1;
 
-  Widget _dataList(String type, String date, int humidity, int temp) {
+  Widget _dataList(String type, String date, int humidity, int temp, String id) {
     i == 1 ? i = 0 : i = 1;
     return Padding(
       padding: EdgeInsets.all(5),
@@ -144,6 +144,7 @@ class _HomeGardenListState extends State<HomeGardenList> {
                         humidity: humidity, //aliment.humidity
                         temp: temp, //aliment.temp
                         date: date, //aliment.date
+                        id: id,
                       ),
                     ),
                   );

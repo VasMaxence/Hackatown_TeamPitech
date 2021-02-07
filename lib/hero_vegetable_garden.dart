@@ -6,19 +6,22 @@ class HeroGardenData extends StatefulWidget {
   final int humidity;
   final int temp;
   final String date;
+  final String id;
 
   HeroGardenData(
       {@required this.type,
       @required this.humidity,
       @required this.temp,
-      @required this.date});
+      @required this.date,
+      @required this.id});
 
   @override
   _HeroGardenDataState createState() => _HeroGardenDataState(
       type: this.type,
       temp: this.temp,
       humidity: this.humidity,
-      date: this.date);
+      date: this.date,
+      id: this.id);
 }
 
 class _HeroGardenDataState extends State<HeroGardenData> {
@@ -26,12 +29,14 @@ class _HeroGardenDataState extends State<HeroGardenData> {
   final int humidity;
   final int temp;
   final String date;
+  final String id;
 
   _HeroGardenDataState(
       {@required this.type,
       @required this.humidity,
       @required this.temp,
-      @required this.date});
+      @required this.date,
+      @required this.id});
 
   @override
   Widget build(BuildContext context) {
@@ -44,7 +49,10 @@ class _HeroGardenDataState extends State<HeroGardenData> {
         child: Icon(Icons.water_damage),
         backgroundColor: Colors.blue,
         onPressed: () async {
-          //await Database.uploadGardenTime(uid);
+          await Database.uploadGardenTime(id);
+          setState(() {
+            print("setting state 32");
+          });
         },
       ),
       body: Container(
