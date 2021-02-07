@@ -39,6 +39,13 @@ class _HeroGardenDataState extends State<HeroGardenData> {
         backgroundColor: Color(0xFF2ECC71),
         elevation: 0,
       ),
+      floatingActionButton: FloatingActionButton(
+        child: Icon(Icons.water_damage),
+        backgroundColor: Colors.blue,
+        onPressed: () {
+          // ici
+        },
+      ),
       body: Container(
         color: Colors.red,
         child: Hero(

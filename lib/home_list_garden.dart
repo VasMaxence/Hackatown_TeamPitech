@@ -11,6 +11,8 @@ class HomeGardenList extends StatefulWidget {
 
 class _HomeGardenListState extends State<HomeGardenList> {
 
+  List gardens = [1, 2, 3];
+
   final firestoreInstance = FirebaseFirestore.instance;
   String val = Data.Aliment[0];
 
@@ -73,23 +75,30 @@ class _HomeGardenListState extends State<HomeGardenList> {
         decoration: BoxDecoration(
           color: Colors.white,
         ),
-        child: ListView(
+        child: ListView.builder(
+          itemCount: gardens.length,
+          itemBuilder: (BuildContext, int index) {
+            return _dataList("fraise", "30/12/01", 12, 10);
+          }
+        )
+
+        /*ListView(
           children: <Widget>[
             _dataList("fraise", "30/12/01", 12, 10),
             _dataList("epinard", "30/12/01", 12, 10),
             _dataList("framboise", "30/12/01", 12, 10),
             _dataList("pomme", "30/12/01", 12, 10),
           ],
-        ),
+        ),*/
       ),
       floatingActionButton: FloatingActionButton(
         child: Icon(Icons.add),
         backgroundColor: Colors.green,
         onPressed: () {
           _showDialog();
-        },
-      ),
-    );
+          },
+        ),
+      );
   }
 
   int i = 1;
